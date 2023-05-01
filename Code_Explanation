@@ -1,0 +1,164 @@
+In the first code block we install and import the required libraries: pandas, numpy, matplotli, seaborn
+
+
+
+Next code block is used to mount your Google Drive to your Google Colaboratory notebook. This allows you to access files and folders stored in your Google Drive from within your notebook.
+Here's how the code works:
+1. `from google.colab import drive`: This line of code imports the `drive` module from the `google.colab` library. This library provides utilities for working with Google Colaboratory, including mounting your Google Drive.
+2. `drive.mount('/content/drive')`: This line of code calls the `mount()` function from the `drive` module to mount your Google Drive to your notebook. The function takes one argument, which is the local directory where your Google Drive will be mounted. In this case, the directory is `/content/drive`, which is a default location for mounting Google Drive in Google Colaboratory.
+
+
+
+Next block of code reads a CSV file containing data about houses in Boston and creates a pandas DataFrame named house to store the data.
+Here's how the code works:
+pd refers to the pandas library, which is a popular library for data analysis in Python.
+pd.read_csv() is a pandas function that reads a CSV file and returns a DataFrame. In this case, the function is reading a CSV file from a URL on GitHub, which contains data about houses in Boston.
+The URL 'https://github.com/ybifoundation/Dataset/raw/main/Boston.csv' specifies the location of the CSV file. It is passed as an argument to the pd.read_csv() function.
+The resulting DataFrame is assigned to a variable named house. The name of the variable is arbitrary and can be changed to anything you like.
+
+
+
+The `house.head()` code is used to display the first few rows of the `house` DataFrame that was created in the previous line of code.
+Here's how the code works:
+1. `house` refers to the pandas DataFrame that was created by reading a CSV file in the previous line of code.
+2. `.head()` is a pandas function that is used to display the first few rows of a DataFrame. By default, it displays the first five rows of the DataFrame.
+3. When you call `house.head()`, the function returns a preview of the first few rows of the DataFrame. This can be useful for getting a quick overview of the data, including the column names and the values in the first few rows.
+Overall, `house.head()` is a convenient way to quickly preview the data in the `house` DataFrame and get a sense of what it contains.
+
+
+
+The `house.info()` code is used to display information about the `house` DataFrame that was created earlier.
+Here's how the code works:
+1. `house` refers to the pandas DataFrame that was created by reading a CSV file in an earlier line of code.
+2. `.info()` is a pandas function that displays a concise summary of the DataFrame, including the number of rows and columns, the data types of each column, and the number of non-null values in each column.
+3. When you call `house.info()`, the function returns a summary of the `house` DataFrame, including the number of rows and columns, the data types of each column, and the number of non-null values in each column.
+Overall, `house.info()` is a useful function for getting an overview of the data in a DataFrame, including the data types of each column and any missing values. This can be helpful in identifying potential data quality issues or data cleaning tasks that may need to be performed before further analysis.
+
+
+
+The `house.describe()` code is used to display summary statistics of the `house` DataFrame that was created earlier.
+Here's how the code works:
+1. `house` refers to the pandas DataFrame that was created by reading a CSV file in an earlier line of code.
+2. `.describe()` is a pandas function that computes summary statistics of the DataFrame, including the count, mean, standard deviation, minimum, and maximum values for each numeric column.
+3. When you call `house.describe()`, the function returns a summary of the `house` DataFrame that includes summary statistics for each numeric column in the DataFrame.
+Overall, `house.describe()` is a useful function for getting a quick overview of the distribution of the numeric variables in the DataFrame. It can help to identify any outliers or unusual values in the data, and can provide a sense of the range and spread of the values in each column.
+
+
+
+The `sns.pairplot(house)` code is used to create a scatter plot matrix of the `house` DataFrame using the seaborn library.
+Here's how the code works:
+1. `sns` refers to the seaborn library, which is a popular library for data visualization in Python.
+2. `.pairplot()` is a seaborn function that creates a scatter plot matrix of a DataFrame. The function takes a DataFrame as its input and creates a grid of scatter plots, where each variable in the DataFrame is plotted against every other variable.
+3. When you call `sns.pairplot(house)`, the function creates a scatter plot matrix of the `house` DataFrame. The diagonal of the plot matrix shows the distribution of each variable, while the off-diagonal plots show the relationship between each pair of variables.
+Overall, `sns.pairplot(house)` is a useful function for quickly visualizing the relationships between variables in a DataFrame, and can help identify potential correlations or patterns in the data.
+
+
+
+The `house.corr()` code is used to compute the correlation matrix of the `house` DataFrame that was created earlier.
+Here's how the code works:
+1. `house` refers to the pandas DataFrame that was created by reading a CSV file in an earlier line of code.
+2. `.corr()` is a pandas function that computes the pairwise correlation of columns in a DataFrame.
+3. When you call `house.corr()`, the function returns a square matrix that shows the correlation between each pair of columns in the DataFrame. The diagonal of the matrix shows the correlation of each variable with itself, which is always 1.
+4. The values in the correlation matrix range between -1 and 1. A value of 1 indicates a perfect positive correlation between two variables, while a value of -1 indicates a perfect negative correlation. A value of 0 indicates no correlation between the variables.
+Overall, `house.corr()` is a useful function for examining the relationships between variables in a DataFrame. It can help to identify potential correlations or patterns in the data, and can be used to select variables for further analysis or modeling.
+
+
+
+The `house.columns` code returns a pandas Index object containing the column labels of the `house` DataFrame that was created earlier.
+Here's how the code works:
+1. `house` refers to the pandas DataFrame that was created by reading a CSV file in an earlier line of code.
+2. `.columns` is a pandas attribute that returns the column labels of a DataFrame.
+3. When you call `house.columns`, the attribute returns an Index object that contains the column labels of the `house` DataFrame.
+Overall, `house.columns` is a useful attribute for examining the column labels of a DataFrame, which can be helpful when selecting or manipulating specific columns of the DataFrame. It can be used to check the names of the columns, or to select a specific column using its label.
+
+
+
+The `y = house['MEDV']` code is used to create a new pandas Series called `y` that contains the target variable of the `house` DataFrame.
+Here's how the code works:
+1. `house` refers to the pandas DataFrame that was created by reading a CSV file in an earlier line of code.
+2. `[['CRIM', 'ZN', 'INDUS', 'CHAS', 'NX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT']]` is used to select a subset of columns from the `house` DataFrame. In this case, it selects the columns 'CRIM', 'ZN', 'INDUS', 'CHAS', 'NX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', and 'LSTAT', which are the input features of the dataset.
+3. When you call `house[['CRIM', 'ZN', 'INDUS', 'CHAS', 'NX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT']]`, it returns a pandas DataFrame object that contains the values of the selected columns of the `house` DataFrame.
+4. The `x = house[['CRIM', 'ZN', 'INDUS', 'CHAS', 'NX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT']]` code assigns this pandas DataFrame to a new variable called `x`.
+Overall, `x = house[['CRIM', 'ZN', 'INDUS', 'CHAS', 'NX', 'RM', 'AGE', 'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT']]` is a common step in machine learning tasks where you need to separate the input features from the target variable of a dataset. In this case, the `x` variable contains the input feature values that we will use to train and test our machine learning models.'MEDV']` is used to select a specific column of the `house` DataFrame. In this case, it selects the 'MEDV' column, which contains the target variable of the dataset.
+
+
+
+`from sklearn.linear_model import LinearRegression` is a Python code that imports the `LinearRegression` class from the `linear_model` module of the scikit-learn (sklearn) library. 
+Here's how the code works:
+1. `from sklearn.linear_model` specifies that we want to import the `LinearRegression` class from the `linear_model` module of the scikit-learn library.
+2. `import LinearRegression` specifies that we want to import only the `LinearRegression` class from the `linear_model` module.
+3. Once the `LinearRegression` class is imported, it can be used to create an instance of a linear regression model, which can be trained on the input features and target variable of a dataset to make predictions.
+Overall, scikit-learn is a popular machine learning library in Python that provides a wide range of tools for building and training machine learning models. The `LinearRegression` class is one of the built-in linear regression models provided by scikit-learn, which can be used to fit a linear regression model to a dataset and make predictions.
+
+
+
+`model = LinearRegression()` creates an instance of the `LinearRegression` class from scikit-learn's `linear_model` module. 
+Here's how the code works:
+1. The `LinearRegression` class is imported from scikit-learn's `linear_model` module using the `from sklearn.linear_model import LinearRegression` code, which we assume has been executed before the `model = LinearRegression()` line.
+2. The `LinearRegression()` code creates a new instance of the `LinearRegression` class and assigns it to a variable named `model`.
+3. The `model` variable now refers to an instance of the `LinearRegression` class, which can be used to fit a linear regression model to a dataset and make predictions.
+Overall, creating an instance of the `LinearRegression` class is a necessary step in training a linear regression model using scikit-learn. Once the `model` variable is created, it can be used to train the model on a training set of input features and target variable, and then make predictions on new data using the `model.predict()` method.
+
+
+
+`model.fit(x, y, sample_weight=None)` is a method of the `LinearRegression` class in scikit-learn, which is used to fit a linear regression model to a dataset. 
+Here's how the code works:
+1. `model` refers to an instance of the `LinearRegression` class that has already been created and initialized with default values using the `model = LinearRegression()` code.
+2. `x` and `y` are two required parameters of the `fit()` method. `x` is the input features matrix (often called the design matrix), which is a pandas DataFrame or numpy array that contains the explanatory variables. `y` is the target variable vector, which is also a pandas DataFrame or numpy array that contains the response variable.
+3. `sample_weight` is an optional parameter that allows the user to assign different weights to different samples in the data set during model fitting. If not specified, the default value of `None` is used, which means that all samples are given equal weight.
+4. When the `model.fit()` method is called with `x`, `y`, and `sample_weight` parameters, the linear regression model is fitted to the input features matrix and target variable. The model estimates the coefficients of each feature in the input matrix that best predict the target variable using a linear regression algorithm.
+5. The `model.fit()` method returns the fitted model object, which can be used to make predictions on new data using the `model.predict()` method.
+Overall, `model.fit()` is an essential method for training a linear regression model in scikit-learn, as it performs the actual model fitting process that estimates the coefficients of the linear regression equation.
+
+
+
+`model.intercept_` is an attribute of the `LinearRegression` class in scikit-learn that represents the estimated intercept of the linear regression model. 
+Here's how the code works:
+1. `model` refers to an instance of the `LinearRegression` class that has already been created and initialized with default values using the `model = LinearRegression()` code.
+2. After training the model using the `model.fit(x, y)` method, the `model.intercept_` attribute can be used to retrieve the estimated intercept of the linear regression model. 
+3. The `model.intercept_` attribute is a scalar value that represents the estimated y-intercept of the linear regression line. It is the value of the dependent variable (y) when all independent variables (x) are zero.
+4. By inspecting the `model.intercept_` attribute, you can gain insight into the overall level of the response variable and how it varies with the values of the explanatory variables.
+Overall, the `model.intercept_` attribute is a useful property to inspect the estimated intercept of a linear regression model trained in scikit-learn.
+
+
+
+`model.coef_` is an attribute of the `LinearRegression` class in scikit-learn that represents the estimated coefficients of the independent variables in the linear regression model. 
+Here's how the code works:
+1. `model` refers to an instance of the `LinearRegression` class that has already been created and initialized with default values using the `model = LinearRegression()` code.
+2. After training the model using the `model.fit(x, y)` method, the `model.coef_` attribute can be used to retrieve the estimated coefficients of the independent variables in the linear regression model.
+3. The `model.coef_` attribute is a numpy array that contains the estimated coefficient values, with one value for each independent variable in the model.
+4. By inspecting the `model.coef_` attribute, you can gain insight into the strength and direction of the relationship between each independent variable and the dependent variable. The sign of each coefficient indicates whether the relationship is positive or negative, while the magnitude of the coefficient indicates the strength of the relationship.
+Overall, the `model.coef_` attribute is a useful property to inspect the estimated coefficients of a linear regression model trained in scikit-learn.
+
+
+
+`model.predict(x)` is a method of the `LinearRegression` class in scikit-learn that is used to predict the response variable (y) for a given set of independent variables (x). 
+Here's how the code works:
+1. `model` refers to an instance of the `LinearRegression` class that has already been created and initialized with default values using the `model = LinearRegression()` code.
+2. After training the model using the `model.fit(x, y)` method, the `model.predict(x)` method can be used to generate predictions for the response variable (y) given a set of independent variables (x).
+3. The `model.predict(x)` method takes a single argument, `x`, which is a numpy array or pandas DataFrame containing the values of the independent variables for which you want to predict the response variable.
+4. The `model.predict(x)` method returns a numpy array containing the predicted values of the response variable (y) for each observation in `x`.
+5. By comparing the predicted values to the actual values of the response variable, you can evaluate the accuracy of the linear regression model.
+Overall, the `model.predict(x)` method is a useful tool for generating predictions from a linear regression model trained in scikit-learn.
+
+
+
+`mean_absolute_percentage_error` is a function from the scikit-learn `metrics` module that calculates the mean absolute percentage error (MAPE) between two sets of data.
+Here's how the code works:
+1. The `from sklearn.metrics import mean_absolute_percentage_error` line imports the `mean_absolute_percentage_error` function from the scikit-learn `metrics` module.
+2. The `mean_absolute_percentage_error` function takes two arguments: `y_true` and `y_pred`. `y_true` is a numpy array or pandas Series containing the true values of the response variable, while `y_pred` is a numpy array or pandas Series containing the predicted values of the response variable.
+3. The `mean_absolute_percentage_error` function returns a scalar value representing the MAPE between `y_true` and `y_pred`. The MAPE is a measure of the accuracy of a predictive model, expressed as a percentage.
+4. The MAPE is calculated as the absolute difference between `y_true` and `y_pred`, divided by `y_true`, multiplied by 100. The mean of these values is then calculated to give the final MAPE value.
+5. The MAPE can be used to evaluate the accuracy of a regression model. A lower MAPE indicates a more accurate model.
+Overall, the `mean_absolute_percentage_error` function is a useful tool for evaluating the accuracy of a predictive model, and can be used to compare the performance of different models on the same data.
+
+
+
+`mean_absolute_percentage_error(y, y_pred)` is a function call to the `mean_absolute_percentage_error` function from the scikit-learn `metrics` module. 
+Here's how the code works:
+1. `y` and `y_pred` are two arguments passed to the `mean_absolute_percentage_error` function. `y` is a numpy array or pandas Series containing the true values of the response variable, while `y_pred` is a numpy array or pandas Series containing the predicted values of the response variable.
+2. The `mean_absolute_percentage_error` function calculates the mean absolute percentage error (MAPE) between `y` and `y_pred`.
+3. The MAPE is a measure of the accuracy of a predictive model, expressed as a percentage.
+4. The MAPE is calculated as the absolute difference between `y` and `y_pred`, divided by `y`, multiplied by 100. The mean of these values is then calculated to give the final MAPE value.
+5. The `mean_absolute_percentage_error` function returns a scalar value representing the MAPE between `y` and `y_pred`. The lower the MAPE, the better the performance of the regression model.
+Overall, the `mean_absolute_percentage_error(y, y_pred)` function call is used to calculate the MAPE between the true values of the response variable (`y`) and the predicted values of the response variable (`y_pred`) generated by the linear regression model.
